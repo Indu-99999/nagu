@@ -1,18 +1,15 @@
-# Use an official Python runtime as a parent image
+# Use a base image with Python 3.9 (you can specify a different version)
 FROM python:3.9
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Copy the application files into the container
 COPY . /app
 
-# Install any dependencies you may have in a requirements.txt file
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Python dependencies if you have a requirements.txt file
+# Uncomment this line if you have a requirements.txt file
+# RUN pip install -r requirements.txt
 
-# Expose any necessary ports
-EXPOSE 8080
-
-# Define the command to run your application
-CMD ["python", "app.py"]
-
+# Define the entry point for your Python application
+CMD ["python", "your_script.py"]
