@@ -1,7 +1,18 @@
-FROM python:3
+# Use an official Python runtime as a parent image
+FROM python:3.9
 
-ADD myScript.py /
+# Set the working directory inside the container
+WORKDIR /app
 
-RUN pip install pystrich
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-CMD [ "python", "./myScript.py" ]
+# Install any dependencies you may have in a requirements.txt file
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose any necessary ports
+EXPOSE 8080
+
+# Define the command to run your application
+CMD ["python", "app.py"]
+
